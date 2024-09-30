@@ -1,0 +1,232 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/student/:student_id/assignments": {
+    "description": "serves an array of all student assignments",
+    "queries": [],
+    "exampleResponse": {
+      "assignments": [
+        {
+          "id": 3,
+          "title": "English: Shakespeare assessment",
+          "body": "An assessment on Shakespeare, his plays and books",
+          "teacher_id": 101,
+          "created_at": "2021-11-11T00:00:00.000Z",
+          "due_date": "2021-10-10T23:00:00.000Z",
+          "assignment_id": 1,
+          "user_id": 3,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null
+        },
+        {
+          "id": 28,
+          "title": "English: Dickens assessment",
+          "body": "An assessment on Dickens Christmas stories",
+          "teacher_id": 101,
+          "created_at": "2022-08-31T23:00:00.000Z",
+          "due_date": "2022-10-10T23:00:00.000Z",
+          "assignment_id": 2,
+          "user_id": 3,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null
+        }
+      ]
+    }
+  },
+  "GET /lessons/:student_id": {
+    "description": "Responds with array of lessons for student_id given",
+    "queries": [],
+    "exampleResponse": {
+      "lessons": [
+        {
+          "id": 1,
+          "title": "English: Shakespeare",
+          "body": "An exploration of Shakespeare, his plays and books",
+          "teacher_id": 101,
+          "created_at": "2021-10-10T23:00:00.000Z"
+        }
+      ]
+    }
+  },
+  "GET /api/student/:student_id/assignments/:assignment_id": {
+    "description": "serves an array of a specific student assignment",
+    "queries": [],
+    "exampleResponse": {
+      "assignment": [
+        {
+          "id": 3,
+          "assignment_id": 1,
+          "user_id": 3,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null,
+          "title": "English: Shakespeare assessment",
+          "body": "An assessment on Shakespeare, his plays and books",
+          "teacher_id": 101,
+          "created_at": "2021-11-11T00:00:00.000Z",
+          "due_date": "2021-10-10T23:00:00.000Z"
+        }
+      ]
+    }
+  },
+  "PATCH /api/student/:student_id/assignments/:assignment_id": {
+    "description": "serves the updated assignment object",
+    "queries": [],
+    "exampleBodyRequest": { "work": "string" },
+    "exampleResponse": {
+      "assignment": {
+        "id": 3,
+        "assignment_id": 1,
+        "user_id": 3,
+        "work": "string",
+        "submit_date": "2023-09-19T09:58:42.078Z",
+        "feedback": null,
+        "mark": null
+      }
+    }
+  },
+  "POST /api/assignments/:teacher_id/:class_id": {
+    "description": "create an assignment and assign it to students by class",
+    "queries": [],
+    "exampleBodyRequest": {
+      "title": "Assignment title",
+      "body": "Assignment body",
+      "due_date": "2023-09-28"
+    },
+    "exampleResponse": {}
+  },
+  "POST /api/lessons/:teacher_id/:class_id": {
+    "description": "create an lesson and assign it to students by class",
+    "queries": [],
+    "exampleBodyRequest": {
+      "title": "Lesson title",
+      "body": "Lesson body"
+    },
+    "exampleResponse": {}
+  },
+  "DELETE /api/assignments/:assignment_id/:user_id": {
+    "description": "delete an user assignment by assignment_id and user_id",
+    "queries": [],
+    "exampleBodyRequest": {},
+    "exampleResponse": {}
+  },
+  "DELETE /api/assignments/:assignment_id": {
+    "description": "delete an assignment by assignment_id",
+    "queries": [],
+    "exampleBodyRequest": {},
+    "exampleResponse": {}
+  },
+  "GET /api/classes/:teacher_id/:class_id": {
+    "description": "Retrieves detailed information for a specific class specified by class_id.",
+    "exampleRequest": {
+      "url": "/api/classes/101/2",
+      "method": "GET"
+    },
+    "exampleResponse": {
+      "class": {
+        "id": 1,
+        "teacher_id": 101,
+        "class_name": "English Literature",
+        "schedule": "Mon, Wed, Fri - 10:00 AM to 11:00 AM",
+        "created_at": "2023-08-20T10:00:00.000Z"
+      },
+      "students": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "email": "john.doe@example.com"
+        },
+        {
+          "id": 2,
+          "name": "Jane Doe",
+          "email": "jane.doe@example.com"
+        }
+      ]
+    }
+  },
+  "GET /api/student/teachers/:student_id": {
+    "description": "serves an object with the key teachers which is an array with the teachers of a specific student's classes",
+    "exampleRequest": {
+      "url": "/api/student/teachers/10",
+      "method": "GET"
+    },
+    "exampleResponse": {
+      "teachers": [
+        {
+          "id": 101,
+          "name": "User101",
+          "surname": "Surname101",
+          "email": "user101.surname101@yahoo.com",
+          "role": "teacher",
+          "created_at": "2003-11-07T00:00:00.000Z",
+          "disability": null
+        }
+      ]
+    }
+  },
+  "GET /api/assignments/:assignment_id/teacher/:teacher_id": {
+    "description": "serves an object with the key assignments which is an array with the students assignments",
+    "exampleRequest": {
+      "url": "/api/assignments/2/teacher/10",
+      "method": "GET"
+    },
+    "exampleResponse": {
+      "assignments": [
+        {
+          "id": 26,
+          "assignment_id": 2,
+          "user_id": 1,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null,
+          "name": "User1",
+          "surname": "Surname1",
+          "class_id": 1
+        },
+        {
+          "id": 27,
+          "assignment_id": 2,
+          "user_id": 2,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null,
+          "name": "User2",
+          "surname": "Surname2",
+          "class_id": 1
+        },
+        {
+          "id": 28,
+          "assignment_id": 2,
+          "user_id": 3,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null,
+          "name": "User3",
+          "surname": "Surname3",
+          "class_id": 1
+        },
+        {
+          "id": 29,
+          "assignment_id": 2,
+          "user_id": 4,
+          "work": null,
+          "submit_date": null,
+          "feedback": null,
+          "mark": null,
+          "name": "User4",
+          "surname": "Surname4",
+          "class_id": 1
+        }
+      ]
+    }
+  }
+}
