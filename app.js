@@ -71,6 +71,14 @@ app.patch("/api/assignmentsid/:assignment_id", patchAssignmentByIdAsTeacher)
 // router
 app.use("/api", apiRouter);
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  next();
+})
+
 //handle custom errors
 app.use((err, req, res, next) => {
   if (err.status && err.msg) {

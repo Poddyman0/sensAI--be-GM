@@ -1,6 +1,9 @@
 {
   "name": "sensai-api",
   "version": "0.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "sensai-api",
   "main": "listen.js",
   "scripts": {

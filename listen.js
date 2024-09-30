@@ -8,4 +8,6 @@ http.listen(IO_PORT, () => {
   console.log(`Socket.IO listening on ${IO_PORT}`);
 });
 
-app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
+app.listen(PORT, "0.0.0.0", function () {
+  console.log(`Listening on ${PORT}...`)
+});
