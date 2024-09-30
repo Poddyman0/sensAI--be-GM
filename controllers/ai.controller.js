@@ -2,12 +2,11 @@ require("openai/shims/node");
 require("dotenv").config();
 
 const OpenAI = require("openai");
-
+/*
 require("dotenv").config({
   path: `${__dirname}/../.env.OPENAI_API_KEY`,
 });
-
-console.log("api key", process.env.OPENAI_API_KEY)
+*/
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_KEY,
