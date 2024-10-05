@@ -4,9 +4,12 @@ const app = express();
 const http = require("http").Server(app); // socket.io
 const io = require("socket.io")(http, {
   cors: {
-    origin: "*",
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
   },
 }); // socket.io
+
 
 app.use(cors());
 app.use(express.json());
