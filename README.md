@@ -1,4 +1,4 @@
-# sensAI--be-GM
+# sensAI Backend
 
 Sens AI is a application that uses Artificial Intelligence to create lessons, create assessments and mark student assignments. 
 # Skills: 
